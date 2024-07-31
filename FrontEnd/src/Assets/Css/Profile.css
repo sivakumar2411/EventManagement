@@ -1,0 +1,236 @@
+.ProfileMainDiv{
+    width: 100%;
+    height: 100vh;
+}
+
+.HomeAndAdminDiv{
+    min-height: 60px;
+    width: 60px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.HomeAndAdminDiv .css-i4bv87-MuiSvgIcon-root{
+    font-size: 1.7rem;
+}
+
+.HomeAndAdminDiv div{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+}
+
+.ProfileContents{
+    width: 80%;
+    height: 80vh;
+    display: grid;
+    grid-template-columns: 33% 63%;
+    gap: 4%;
+    place-items: center;
+}
+
+.ProfileSideContent{
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    /* border: 1px groove white; */
+    border-radius: 30px;
+}
+
+.ProfileMainContent{
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    border-radius: 30px;
+    /* border: 1px groove blue; */
+}
+
+.ProfileImageDiv{
+    width: 80%;
+    height: 40%;
+    display: grid;
+    place-items: center;
+    /* border: 1px groove blue; */
+    position: relative;
+    box-shadow: 1px 1px 5px 1px black;
+    /* margin-top: 10px; */
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-radius: 20px;
+}
+
+.ProfileImagePlacer{
+    position: relative;
+    margin-top: 10px;
+}
+
+.ProfileImagePlacer input{
+    position: absolute;
+}
+
+.ProfileImagePlacer span{
+    backdrop-filter: blur(40px);
+    z-index: 3;
+    width: 80%;
+    height: 40%;
+    display: grid;
+    place-items: center;
+    position: absolute;
+    border-radius: 50%;
+    top: 0;
+}
+
+.ProfileImageDiv .ProfileImagePlacer{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+.ProfileImagePlacer img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    /* border: 1px groove blue; */
+}
+.ProfileImagePlacer span{
+    width: 100%;
+    height: 100%;
+    background: none;
+    opacity:.5;
+}
+
+.ProfileImgName{
+    font-size: 27px;
+    font-family: cursive;
+}
+
+.ProfileSideBarContentDiv{
+    width: 85%;
+    height:50%;
+    /* box-shadow: 1px 1px 5px 1px black; */
+    flex-direction: column;
+    gap: 30px;
+    font-size: 25px;
+    cursor: pointer;
+    /* border: 1px groove blue; */
+}
+
+
+.ProfileMainDetailsDiv{
+    width: 100%;
+    height: 80%;
+    display: grid;
+    grid-template-rows: repeat(4,90px);
+    grid-auto-flow: row;
+    padding-top: 50px;
+    padding-left: 30px;
+    align-items: left;
+    gap: 10px;
+}
+
+.ProfileMainEditSymbols{
+    width: 90%;
+    height: 20%;
+    display: flex;
+    gap: 20px;
+    justify-content: right;
+    /* border: 1px groove green; */
+}
+
+.EditIcons{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.EditIcons .css-1p7a5wk-MuiButtonBase-root-MuiFab-root{
+    width: 45px;
+    height: 45px;
+    font-size: 1.1rem;
+}
+
+.ProfileMainDetailsDiv div{
+    width: 70%;
+    height: 100%;
+    /* border: 1px groove blue; */
+}
+
+.ProfileMainDetailsDiv input{
+    width: 50%;
+    height: 60%;
+    font-size: 21px;
+    padding-left: 10px;
+    margin-left: 20px;
+    border-radius: 15px;
+}
+
+.ProfileMainDetailsDiv textarea{
+    padding-left: 10px;
+    margin-left: 20px;
+    font-size: 20px;
+    width: 60%;
+    height: 100%;
+    border-radius: 15px;
+}
+
+.ProfileRegion,.ProfileGender{
+    padding-left:10px ;
+    margin-left: 20px;
+}
+
+.PMDUserRegionDiv div{
+    display: flex;
+}
+.PMDUserGenderDiv div{
+    display: flex;
+}
+#ProfRN,#ProfGN{
+    width: 120px;
+    height: 35px;
+    position: relative;
+    font-size: 20px;
+    left: 200px;
+}
+
+.ProfileMainDetailsDiv label{
+    width: 70%;
+    height: 100%;
+    font-size: 22px;
+}
+
+.ProfileMainDetailsDiv label span{
+    opacity: .6;
+}
+
+.ProfileMainDetailsDiv.Dark input{
+    color: white;
+    border-color: white;
+}
+
+.ProfileMainDetailsDiv.Light input{
+    color: black;
+    border-color: black;
+}
+
+.ProfileMainDetailsDiv.Dark textarea{
+    color: white;
+    border-color: white;
+}
+
+.ProfileMainDetailsDiv.Light textarea{
+    color: black;
+    border-color: black;
+}
+
+
+
+

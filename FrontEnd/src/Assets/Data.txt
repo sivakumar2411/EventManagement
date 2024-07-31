@@ -1,0 +1,51 @@
+User = {
+    uname,
+    email,
+    password,
+    isAdmin,
+    isManager,
+    isBooking,
+    if(Manager is true)
+    {
+        Resume,
+        Contact No,
+        Events = {
+            CurrentEvents = [
+
+            ],
+            Passed = [
+
+            ]
+        },
+        Review = [
+
+        ]
+    },
+    if(Booking is true)
+    {
+        Events = {
+            CurrentEvents = [
+
+            ],
+            Passed = [
+
+            ]
+        }
+    }
+}
+
+Event = {
+
+    isPublic,
+    FeeToJoin,
+    Place,
+    Event-Date,
+    Expected People,
+    Registered = [
+        {uesr_Id}
+    ],
+}
+
+PassedEvents = [
+
+]

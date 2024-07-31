@@ -1,0 +1,684 @@
+.HomeBaseDiv{
+    min-height: 100vh;
+    height: auto;
+    width: 100%;
+}
+
+.NavDivOnHome{
+    width: 100%;
+    height: 10vh;
+    z-index: 10;
+    position: fixed;
+}
+
+.FooterDivOnHome{
+    width: 100%;
+    height: 10vh;
+    z-index: 5;
+    position: relative;
+    bottom: 0;
+}
+
+.EventCraftHeading{
+    position: absolute;
+    width: auto;
+    height: auto;
+    font-size: 40px;
+    left: 10%;
+    font-family: 'Lora';
+
+}
+
+.AppNameOnPara{
+    color: #2772db;
+    font-family: 'Pacifico', cursive;
+
+}
+
+.HomeMainDiv{
+    width: 100%;
+    min-height: 90vh;
+    height: auto;
+    flex-direction: column;
+    gap: 100px;
+    padding-bottom: 150px;
+    /* background-color: white; */
+}
+
+.HomeHeroDiv{
+    margin-top: 140px;
+    width:80%;
+    height:70vh;
+    border-radius: 30px;
+    background: rgb(255,255,255,.1);
+    animation: BreathAni 5s infinite;
+    z-index: 6;
+    box-shadow: -1px 2px 10px 1px black;
+    backdrop-filter: blur(100px);
+}
+
+.HeroContentDiv{
+    width: 60%;
+    margin-top: 7%;
+    height: 93%;
+    flex-direction: column;
+    /* background-image: url('../Images/Party1.jpg'); */
+}
+
+.HeroContentDiv p{
+    width: 90%;
+}
+
+.HeroHeadLine{
+    font-size: 28px;
+    margin-top: -105px;
+    font-family: cursive;
+}
+
+.HeroSubHeadLine{
+    font-size: 20px;
+    opacity: .7;
+    margin-top: -10px;
+    font-family: cursive;
+}
+
+.HeroDescription{
+    font-size: 21px;
+    text-indent:30%;
+}
+
+.HeroImageDiv{
+    width: 40%;
+    height: 95%;
+    margin: 1%;
+    background-image: url('../Images/Party1.jpg');
+    background-position-y:bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.RaisingNumbers{
+
+    width: 80%;
+    height: 60px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: 100px;
+}
+
+.raisenumber{
+    width: 100%;
+    height: 100%;
+    gap: 10px;
+    /* border: 1px solid black; */
+    flex-direction: column;
+}
+
+.raisingnumcontent{
+    margin-top: -10px;
+    font-size: 15px;
+}
+
+.raisingnumber{
+    font-size: 17px;
+}
+
+.GetStartedDiv{
+    margin-top: 70px;
+    width: 170px;
+    height: 40px;
+    font-size: 18px;
+    display: grid;
+    place-items: center;
+    border:1px groove #f8b500;
+    cursor: pointer;
+    color: #f8b500;
+    transition: .5s ease;
+}
+
+.GetStartedDiv:hover{
+    width: 180px;
+    height: 45px;
+    font-size: 20px;
+    transform: translateY(-5px);
+    color: white;
+    background-color: #f8b500;
+    box-shadow: -1px 2px 5px .3px #f8b500;
+}
+
+.HeroDesigndiv{
+    position: absolute;
+    z-index: 5;
+    /* background-color: black; */
+}
+
+.HeroDesigndiv.HeroDD-1{
+    width: 10%;
+    height: 25%;
+    top: -10%;
+    right: -5%;
+    /* background-color: #fdffcd; */
+}
+.HeroDesigndiv.HeroDD-2{
+    width: 7%;
+    height: 15%;
+    bottom: -10%;
+    right: 25%;
+    /* background-color: #fdffcd; */
+}
+
+.HeroDesigndiv.Dark{
+    background:linear-gradient(to bottom left,rgb(27, 27, 27),black);
+}
+.HeroDesigndiv.Light{
+    background:linear-gradient(to bottom left,rgb(230,230,230),white);
+}
+
+@keyframes BreathAni
+{
+    0%{transform: scale(1)}    
+    50%{transform: scale(1.02)}
+    100%{transform: scale(1)}   
+}
+
+.HomenonHeroContentDiv{
+    color: black;
+    padding-top: 50px;
+    flex-direction: column;
+    width: 100%;
+    gap: 110px;
+}
+
+.HomeContent{
+    width: 80%;
+    height: 500px;
+    /* border: 1px groove white; */
+    margin-bottom: 50px;
+
+    transition: transform .4s ease;
+
+}
+
+.HCdiv-1.LetterCameDiv,.HCdiv-3.LetterCameDiv{
+    transform:rotateZ(-1.5deg);
+}
+
+.HCdiv-2.LetterCameDiv,.HCdiv-4.LetterCameDiv{
+    transform:rotateZ(1.5deg);
+}
+
+.HContentDiv{
+    width: 45%;
+    height: 100%;
+    background-color: #f0d78c;
+    color: black;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+
+    color: transparent;
+    transition: transform 1s ease;
+}
+
+.HCD-1,.HCD-3{
+    border-radius: 40px 0px 0px 0px;
+
+    transform-origin: right;
+    transform: scaleX(0.2);
+}
+
+.HCD-2,.HCD-4{
+    border-radius: 0px 40px 0px 0px;
+    
+    transform-origin: left;
+    transform: scaleX(0.2);
+}
+
+
+.HCDDesignDiv-1,.HCDDesignDiv-3{
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    bottom: -50px;
+    right:0;
+    border-top: 1px groove transparent;
+    border-right: 50px groove #887f5e;
+    border-bottom: 50px groove transparent;
+}
+
+.HCDDesignDiv-2,.HCDDesignDiv-4{
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    bottom: -50px;
+    left:0;
+    border-top: 1px groove transparent;
+    border-left: 50px groove #887f5e;
+    border-bottom: 50px groove transparent;
+}
+
+.HContentHeading{
+    width: 90%;
+    height: 40px;
+    font-size: 30px;
+}
+
+.HContentHeading.HCH-1,.HContentHeading.HCH-3{
+    text-align: right;
+}
+
+.HContentHeading.HCH-2,.HContentHeading.HCH-4{
+    text-align: left;
+}
+
+.HContentContext{
+    width: 90%;
+    font-size: 20px;
+    height: 200px;
+}
+
+.HImageDiv{
+    width: 55%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.HIdiv-1{
+    width: 70%;
+    height: 110%;
+    margin-top: 4%;
+    background-image: url("../Images/Event3.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-x:center ;
+    background-position-y:45% ;
+}
+
+.HIdiv-2{
+    width: 70%;
+    height: 110%;
+    margin-top: 4%;
+    background-image: url("../Images/Touch.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.HIdiv-3{
+    width: 70%;
+    height: 110%;
+    margin-top: 4%;
+    background-image: url("../Images/Event2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.HIdiv-4{
+    width: 70%;
+    height: 110%;
+    margin-top: 4%;
+    background-image: url("../Images/LoveNotes.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y:center ;
+}
+
+.LetterCameOut{
+
+    color: inherit;
+    transform: scaleX(1);
+
+}
+
+.HContentButton{
+    width: 170px;
+    /* border: 1px groove white; */
+    margin-top:unset;
+    font-size: 22px;
+    height: 35px;
+}
+
+.HContentButton:hover{
+    font-size: 25px;
+}
+
+
+/************************************************************/
+
+
+@media screen and (max-width: 1210px) {
+    
+    .EventCraftHeading{
+        font-size: 35px;
+    }
+
+
+    .NavDivOnHome{
+        height: 8vh;
+    }
+
+    .HomeHeroDiv{
+        height: 60vh;
+        border-radius: 25px;
+    }
+
+    .HeroHeadLine {
+        font-size: 18px;
+        margin-top: -55px;
+    }
+
+    .HeroSubHeadLine {
+        font-size: 14px;
+    }
+
+    .HeroDescription {
+        font-size: 15px;
+    }
+
+    .RaisingNumbers {
+        height: 50px;
+    }
+
+    .raisenumbericon .css-i4bv87-MuiSvgIcon-root{
+        font-size: 1.2rem;
+    }
+
+    .raisenumber {
+        gap: 5px
+    }
+
+    .raisingnumber {
+        font-size: 13px;
+    }
+
+    .raisingnumcontent {
+        margin-top: -5px;
+        font-size: 11px;
+    }
+
+    .GetStartedDiv {
+        margin-top: 50px;
+        width: 150px;
+        height: 35px;
+        font-size: 14px;
+    }
+
+    .GetStartedDiv:hover{
+        width: 160px;
+        height: 40px;
+        font-size: 16px;
+        transform: translateY(-3px);
+        box-shadow: -.8px 1.5px 4px .3px #f8b500;
+    }
+
+    .HomeContent{
+        height: 430px;
+    }
+
+    .HCDDesignDiv-1, .HCDDesignDiv-3 {
+        bottom: -35px;
+        border-right: 40px groove #887f5e;
+        border-bottom: 35px groove transparent;
+    }
+
+    .HCDDesignDiv-2, .HCDDesignDiv-4 {
+        bottom: -35px;
+        border-left: 40px groove #887f5e;
+        border-bottom: 35px groove transparent;
+    }
+
+    .HCD-1, .HCD-3 {
+        border-radius: 30px 0px 0px 0px;
+    }
+
+    .HCD-2, .HCD-4 {
+        border-radius: 0px 30px 0px 0px;
+    }
+
+    .HContentHeading {
+        font-size: 18px;
+    }
+
+    .HContentContext {
+        font-size: 14.5px;
+    }
+
+    .HContentDiv .GetStartedDiv{
+        margin-top: 10px;
+    }
+
+    .FooterDivOnHome{
+        height: 8vh;
+    }
+
+}
+
+@media screen and (max-width: 825px) {
+
+    .EventCraftHeading {
+        font-size: 25px;
+    }
+
+    .NavDivOnHome{
+        height: 7vh;
+    }
+
+    .HomeHeroDiv {
+        height: 55vh;
+        border-radius: 20px;
+        margin-top: 90px;
+    }
+
+    .HeroSubHeadLine {
+        font-size: 12px;
+    }
+
+    .HeroHeadLine {
+        font-size: 15px;
+        margin-top: -40px;
+    }
+
+    .HeroDescription {
+        font-size: 12px;
+    }
+
+    .RaisingNumbers {
+        height: 45px;
+    }
+
+    .raisenumber {
+        gap: 4px;
+    }
+
+    .raisenumbericon .css-i4bv87-MuiSvgIcon-root{
+        font-size: .9rem;
+    }
+
+    .raisingnumber {
+        font-size: 11px;
+    }
+
+    .raisingnumcontent {
+        margin-top: -3px;
+        font-size: 9px;
+    }
+
+    .GetStartedDiv {
+        margin-top: 45px;
+        width: 130px;
+        height: 27px;
+        font-size: 13px;
+    }
+
+    .GetStartedDiv:hover{
+        width: 140px;
+        height: 33px;
+        font-size: 15px;
+        transform: translateY(-2.5px);
+        box-shadow: -.6px 1.2px 3.5px .25px #f8b500;
+    }
+
+    .HomenonHeroContentDiv {
+        padding-top: 30px;
+    }
+
+    .HomeContent {
+        height: 380px;
+    }
+
+    .HCD-1, .HCD-3 {
+        border-radius: 20px 0px 0px 0px;
+    }
+
+    .HCD-2, .HCD-4 {
+        border-radius: 0px 20px 0px 0px;
+    }
+
+    .HCDDesignDiv-1, .HCDDesignDiv-3 {
+        bottom: -30px;
+        border-right: 35px groove #887f5e;
+        border-bottom: 30px groove transparent;
+    }
+
+    .HCDDesignDiv-2, .HCDDesignDiv-4 {
+        bottom: -35px;
+        border-left: 30px groove #887f5e;
+        border-bottom: 35px groove transparent;
+    }
+    
+    .HContentHeading {
+        font-size: 14px;
+    }
+
+    .HContentContext {
+        font-size: 13px;
+    }
+
+    .HContentDiv .GetStartedDiv {
+        margin-top: 7px;
+    }
+
+    .GetStartedDiv {
+        width: 120px;
+        height: 25px;
+        font-size: 13px;
+    }
+
+}
+
+@media screen and (max-width: 630px) {
+
+    .HomeHeroDiv {
+        height: 50vh;
+        border-radius: 15px;
+        background-image: url('../Images/Party1.jpg');
+        background-size: cover;
+        background-position-x:center ;
+        background-position-y:60% ;
+    }
+
+    .HeroContentDiv {
+        width: 90%;
+        backdrop-filter: blur(2px);
+        background-image: white;
+    }
+
+    .HeroImageDiv {
+        visibility: hidden;
+        width: 0%;
+    }
+
+    .HomeMainDiv{
+        gap: 70px;
+        padding-bottom: 75px;
+    }
+
+    .HomeContent{
+        flex-direction: column;
+    }
+
+    .HCdiv-1.LetterCameDiv, .HCdiv-3.LetterCameDiv ,.HCdiv-2.LetterCameDiv, .HCdiv-4.LetterCameDiv {
+        transform: rotateZ(0deg);
+    }
+
+    .HCD-1.LetterCameOut, .HCD-2.LetterCameOut , .HCD-3.LetterCameOut, .HCD-4.LetterCameOut {
+        transform: scaleY(1);
+    }
+
+    .HContentDiv {
+        width: 95%;
+        height: 45%;   
+    }
+    
+    .HCD-1, .HCD-3 {
+        border-radius: 20px 20px 0px 0px;
+        transform-origin: bottom;
+        transform: scaleY(0.2);
+    }
+    
+    .HCD-2, .HCD-4{
+        border-radius: 0px 0px 20px 20px;
+        transform-origin: top;
+        transform: scaleY(0.2);
+    }
+
+    .HIdiv-1 , .HIdiv-2 ,.HIdiv-3 , .HIdiv-4 {
+        width: 100%;
+        height: 55%;
+        background-size: cover;
+        background-position-x: center ;
+        background-position-y: 45% ;
+        margin-top: unset;
+    }
+
+    .HCDDesignDiv-1, .HCDDesignDiv-3 , .HCDDesignDiv-2, .HCDDesignDiv-4{
+        visibility: hidden;
+    }
+
+    .HContentHeading {
+        width: 90%;
+        height: 30px;
+        font-size: 13;
+    }
+
+    .HContentContext {
+        height: 120px;
+        font-size: 11px;
+    }
+
+    .HContentDiv .GetStartedDiv {
+        margin-top: unset;
+        margin-bottom: 15px;
+        height: 30px;
+        width: 100px;
+    }
+    
+}
+
+@media screen and (max-width: 500px) {
+
+    .HomeMainDiv{
+        padding-bottom: 30px;
+    }
+
+    .HomenonHeroContentDiv{
+        gap: 40px;
+    }
+
+    .HContentHeading{
+        font-size: 12px;
+        height: 20px;
+    }
+
+    .HContentContext{
+        margin-top: -7px;
+    }
+
+    .HCdiv-4 .HContentDiv .GetStartedDiv{
+        margin-bottom: 5px;
+    }
+    
+}
