@@ -7,13 +7,14 @@ import { Fab } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import BookmarkAddedIcon from '@mui/icons-material/BookmarkAdded';
 import ToasterFunc from './ToasterFunc';
-import { getAllUsers, UpdateUser } from '../Assets/JSON/Api';
+import { getAllUsers, UpdateUser } from '../Assets/Api/UserApi';
 import Boy from '../Assets/Datas/AboutData';
 import HomeIcon from '@mui/icons-material/Home';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import { useNavigate } from 'react-router-dom';
-import { pink } from '@mui/material/colors';
+import { green, pink } from '@mui/material/colors';
 import toast from 'react-hot-toast';
+import { Add } from '@mui/icons-material';
 
 
 
@@ -43,11 +44,13 @@ const Profile = () => {
 
     const UpdateprofileDts = async()=>{
 
-        const {data:Users} = await getAllUsers();
-        for(const u of Users)
+        const res = await getAllUsers();
+        for(const u of res.data)
         {
             if(u.uname === UserDatas.uname && u.id !== UserDatas.id)
                 {
+                    console.log(u,UserDatas);
+                    
                     toast.error("UserName Already Exist");
                     return;
                 }
@@ -63,7 +66,8 @@ const Profile = () => {
         <ToasterFunc/>
         <div className='HomeAndAdminDiv'>
             <div className={'HomeIcononProfile '+((Theme)?"ThemeDarkDiv":"ThemeLightDiv")} onClick={(event)=>{navi('/Home')}}><HomeIcon sx={{color:pink.A400}}/></div>
-            {(UserDatas.isAdmin)?<div className={'AdminIcononProfile '+((Theme)?"ThemeDarkDiv":"ThemeLightDiv")} onClick={(event)=>{navi('/Admin')}}><AdminPanelSettingsIcon color='primary'/></div>:null}
+            {(UserDatas.admin)?<div className={'AdminIcononProfile '+((Theme)?"ThemeDarkDiv":"ThemeLightDiv")} onClick={(event)=>{navi('/Admin')}}><AdminPanelSettingsIcon color='primary'/></div>:null}
+            {(UserDatas.manager)?null:<div className={'AdminIcononProfile '+((Theme)?"ThemeDarkDiv":"ThemeLightDiv")} onClick={(event)=>{navi('/ManagerApplication')}} title='Apply for Manager'><Add sx={{color:green.A400}}/></div>}
         </div>
         <div className="ProfileContents ">
             <div className={"ProfileSideContent CenterFication "+((Theme)?"ThemeDarkDiv":"ThemeLightDiv")}>
@@ -71,12 +75,12 @@ const Profile = () => {
                     <div className="ProfileImagePlacer">
                     {(isEditable)?<>
                     <label htmlFor='ProfImgInput' style={{cursor:"pointer"}}>
-                        <input type='file' id='ProfImgInput' style={{overflow:'hidden',width:"0",height:"0"}} accept='image/*' onChange={ProfileImage}/>
+                        <input type='file' id='ProfImgInput' style={{overflow:'hidden',width:"0",height:"0"}} accept='image/*' /*onChange={ProfileImage}*//>
                     <img src={UserDatas.profImg?UserDatas.profImg:Boy} alt={User.uname} />
                     <span><AddAPhotoIcon/></span></label></>:
                     <img src={UserDatas.profImg?UserDatas.profImg:Boy} alt={User.uname} />}
                     </div>
-                    <div className='ProfileImgName' style={{color:User.isAdmin?"gold":User.isManager?"green":""}}>{User.uname}</div>
+                    <div className='ProfileImgName' style={{color:User.admin?"gold":User.mana?"green":""}}>{User.uname}</div>
                 </div>
                 <div className='ProfileSideBarContentDiv CenterFication'>
                         <div className="ProfileSideOptions Option-1" style={{color:isDetail?"blue":""}} onClick={(event)=>setIsDet(true)}>Personal Info</div>

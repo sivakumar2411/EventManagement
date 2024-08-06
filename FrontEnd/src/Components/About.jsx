@@ -105,7 +105,7 @@ const About = () => {
               {/* <label>Phone No</label> */}
               <input type='text' className='ContactPhoneNo' placeholder='PhoneNo'></input>
               {/* <label>Message</label> */}
-              <textarea className='ContactMessage' placeholder='Message'></textarea>
+              <textarea className='ContactMessage' placeholder='Message' style={{resize:"none"}}></textarea>
               <button type='submit' className='ContactUSButton'>Send</button>
             </form>
             }

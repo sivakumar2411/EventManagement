@@ -3,7 +3,7 @@ import { Context } from './GlobeData';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import ToasterFunc from './ToasterFunc';
-import { getAllUsers, PostUser } from '../Assets/JSON/Api';
+import { getAllUsers, PostUser } from '../Assets/Api/UserApi';
 
 const SignUp = (props) => {
 
@@ -30,39 +30,41 @@ const SignUp = (props) => {
     else if(user.password!== cpass)
       toast.error("Passwords do not match");
     else{
-      const emExist = (euser)? euser.findIndex(({email})=>email === user.email):-1;
-      const unameExist = (euser)?euser.findIndex(({uname})=>uname === user.uname):-1;
+      // const emExist = (euser)? euser.findIndex(({email})=>email === user.email):-1;
+      // const unameExist = (euser)?euser.findIndex(({uname})=>uname === user.uname):-1;
 
-      if(emExist !== -1)
+      // if(emExist !== -1)
+      // {
+      //   toast.error("Email already exists");
+      //   return;
+      // }
+      // else if(unameExist!== -1)
+      // {
+      //   toast.error("UserName already exists");
+      //   return;
+      // }
+
+      // const NUser = {
+      //   ...user,
+      //   gender:"Male",
+      //   region:"Asia",
+      //   about:" ",
+      //   admin:false,
+      //   manager:null,
+      //   profImg:"",
+      //   eventsOrganised:null,
+      // }
+
+      const res = await PostUser(user);
+      if(res.data === "Signed Up")
       {
-        toast.error("Email already exists");
-        return;
+        toast.success("Signed up!")
+          setTimeout(()=>{
+            setLogIn(true);
+        },2500)
       }
-      else if(unameExist!== -1)
-      {
-        toast.error("UserName already exists");
-        return;
-      }
-
-      const NUser = {
-        ...user,
-        gender:"Male",
-        region:"Asia",
-        about:" ",
-        isAdmin:false,
-        isManager:false,
-        isBooking:false,
-        profImg:"",
-        ParticipatedEvents:[],
-      }
-
-      await PostUser(NUser);
-      toast.success("Signed up!")
-      setTimeout(()=>{
-        console.log(NUser);
-        LOGIN(NUser);
-        navi("/Home")
-      },2500)
+      else
+      toast.error(res.data)
     }
   }
 
@@ -71,7 +73,8 @@ const SignUp = (props) => {
     const getUD = async() =>{
 
       const res = await getAllUsers();
-      setEU(res.data);
+      setEU(res.data || []);
+      
 
     }
 

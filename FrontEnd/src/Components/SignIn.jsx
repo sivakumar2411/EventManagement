@@ -3,7 +3,8 @@ import { Context } from './GlobeData'
 import toast from 'react-hot-toast';
 import ToasterFunc from './ToasterFunc';
 import { useNavigate} from 'react-router-dom';
-import { getAllUsers } from '../Assets/JSON/Api';
+import { LogInApi } from '../Assets/Api/UserApi';
+// import { getAllUsers, LogInApi } from '../Assets/Api/UserApi';
 
 const SignIn = (props) => {
 
@@ -12,7 +13,7 @@ const SignIn = (props) => {
   const navi = useNavigate()
 
   const [user,setuser] = useState({uname:"",password:""});
-  const [euser,setEU] = useState([]);
+  // const [userEx,setUE] = useState({});
 
 
   const Login =async()=>
@@ -24,41 +25,59 @@ const SignIn = (props) => {
     else
     {
 
-      const emEx = (euser)?euser.findIndex(({email})=>email === user.uname):-1;
-      const unEx = (euser)?euser.findIndex(({uname})=>uname === user.uname):-1;
+      // const emEx = (euser)?euser.findIndex(({email})=>email === user.uname):-1;
+      // const unEx = (euser)?euser.findIndex(({uname})=>uname === user.uname):-1;
 
-      if(emEx === -1 && unEx === -1)
+      // if(emEx === -1 && unEx === -1)
+      // {
+      //   toast.error("Email/UserName does not exist!");
+      //   return;
+      // }
+      // else{
+      //   const ind = Math.max(emEx, unEx);
+      //   if(euser[ind].password !== user.password)
+      //   {
+      //     toast.error("Password is incorrect!");
+      //     return;
+      //   }
+        
+      //   toast.success("Logged in!");
+      //   setTimeout(()=>{
+      //     LOGIN(euser[ind]);
+      //     navi('/Home');
+      //   },2500)
+      // }
+
+      const res = await LogInApi(user.uname, user.password);
+
+      if(!res.data)
       {
-        toast.error("Email/UserName does not exist!");
+        toast.error("Something went wrong");
         return;
       }
-      else{
-        const ind = Math.max(emEx, unEx);
-        if(euser[ind].password !== user.password)
-        {
-          toast.error("Password is incorrect!");
-          return;
-        }
-        
+      else
+      {
         toast.success("Logged in!");
         setTimeout(()=>{
-          LOGIN(euser[ind]);
+          LOGIN(res.data);
           navi('/Home');
         },2500)
       }
     }
   }
 
-  useEffect(()=>{
+  // useEffect(()=>{
 
-    const getUD=async()=>{
-      const res = await getAllUsers();
-      setEU(res.data);
-    }
+  //   const getUD=async()=>{
+  //     const res = await getAllUsers();
+  //     setEU(res.data);
+  //     console.log(res);
+      
+  //   }
 
-    getUD();
+  //   getUD();
 
-  },[])
+  // },[])
 
 
   return (

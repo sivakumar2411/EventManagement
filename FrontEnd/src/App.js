@@ -14,6 +14,7 @@ import { useContext } from 'react';
 import { Context } from './Components/GlobeData.jsx';
 import DashBoard from './Components/DashBoard.jsx';
 import ManagerApplication from './Components/ManagerApplication.jsx';
+import EventBooking from './Components/EventBooking.jsx';
 
 function App() {
 
@@ -29,7 +30,8 @@ function App() {
       {(LoggedIn)?<><Route path="/Profile" element={<Profile/>}/>
         <Route path='/DashBoard' element={<DashBoard/>} />
         <Route path='/ManagerApplication' element={<ManagerApplication/>}/>
-        {(User?.isAdmin)?<Route path="/Admin" element={<Admin/>}/>:null}
+        <Route path='/EventBooking' element={<EventBooking/>}/>
+        {(User?.admin)?<Route path="/Admin" element={<Admin/>}/>:null}
         </>:null}
       <Route path='*' exact element={<WrongUrl/>}/>
     </Routes>

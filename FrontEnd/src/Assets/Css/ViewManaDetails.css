@@ -1,0 +1,16 @@
+.ManagerDtsOnAdminViewMain{
+    position: fixed;
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+    display: grid;
+    place-items: center;
+    backdrop-filter: blur(10px);
+    z-index: 10;
+}
+
+.ManagerDtsView{
+    width: 70%;
+    height: 90vh;
+}
+

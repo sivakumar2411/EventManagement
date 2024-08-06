@@ -3,8 +3,8 @@ import Navbar from './Navbar'
 import Footer from './Footer'
 import '../Assets/Css/Event.css'
 import { Context } from './GlobeData'
-import { getAllEvents } from '../Assets/JSON/Api'
-import { Add } from '@mui/icons-material'
+import { getAllEvents } from '../Assets/Api/EventApi'
+// import { Add } from '@mui/icons-material'
 import { Carousel } from 'react-responsive-carousel'
 
 const Events = () => {
@@ -17,7 +17,7 @@ const Events = () => {
         
         const FetchEvents =async()=>{
             const res = await getAllEvents();
-            setEvents(res.data);
+            setEvents(res.data || []);
         }
 
         FetchEvents();
