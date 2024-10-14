@@ -9,11 +9,13 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.backend.backend.Model.Manager;
+import com.backend.backend.Model.User;
 import com.backend.backend.Service.ManagerService;
 
 @RestController
@@ -36,7 +38,7 @@ public class ManagerController
         }
     }
 
-    @GetMapping("/UpdateManager")
+    @PutMapping("/UpdateManager")
     public ResponseEntity<String> updateManager(@RequestBody Manager M)
     {
         try{
@@ -83,7 +85,7 @@ public class ManagerController
     }
 
     @GetMapping("/GetAll")
-    public ResponseEntity<List<Manager>> getAllManagers()
+    public ResponseEntity<List<User>> getAllManagers()
     {
         try{
             return new ResponseEntity<>(MS.getAllManagers(),HttpStatus.OK);
@@ -93,4 +95,37 @@ public class ManagerController
         }
     }
 
+    @GetMapping("/GetTopManagers")
+    public ResponseEntity<List<Manager>> getTopManagers()
+    {
+        try{
+            return new ResponseEntity<>(MS.getTopManagers(),HttpStatus.OK);
+        }
+        catch(Exception e){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("/GetByPlace/{place}")
+    public ResponseEntity<List<Manager>> getByPlace(@PathVariable String place)
+    {
+        try{
+            return new ResponseEntity<>(MS.getByPlace(place),HttpStatus.OK);
+        }
+        catch(Exception e){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+    
+    @PutMapping("/PostRequestToAll/{id}")
+    public ResponseEntity<String> postRequesToAll(@PathVariable int id)
+    {
+        try{
+            MS.EventRequestToAll(id);
+            return new ResponseEntity<>("Event request sent to all managers", HttpStatus.OK);
+        }
+        catch(Exception e){
+            return new ResponseEntity<>("Failed to send event request", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }

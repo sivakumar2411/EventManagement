@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Context } from './GlobeData'
 import toast from 'react-hot-toast';
-import ToasterFunc from './ToasterFunc';
 import { useNavigate} from 'react-router-dom';
 import { LogInApi } from '../Assets/Api/UserApi';
 // import { getAllUsers, LogInApi } from '../Assets/Api/UserApi';
@@ -49,7 +48,7 @@ const SignIn = (props) => {
       // }
 
       const res = await LogInApi(user.uname, user.password);
-
+      
       if(!res.data)
       {
         toast.error("Something went wrong");
@@ -82,7 +81,6 @@ const SignIn = (props) => {
 
   return (
     <div className='SignInDiv CenterFication'>
-      <ToasterFunc/>
       <h2>SignIn</h2>
       <div className='SignInMainDiv CenterFication'>
         <form onSubmit={(event)=>{event.preventDefault();Login()}} className='SignINFORM CenterFication'>

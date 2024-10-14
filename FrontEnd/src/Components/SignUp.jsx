@@ -2,18 +2,16 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Context } from './GlobeData';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
-import ToasterFunc from './ToasterFunc';
 import { getAllUsers, PostUser } from '../Assets/Api/UserApi';
 
 const SignUp = (props) => {
 
-  const {Theme , LOGIN , AUsers} = useContext(Context);
-  const {LogIn,setLogIn} = props.Log;
-  const navi = useNavigate();
+  const {Theme} = useContext(Context);
+  const {setLogIn} = props.Log;
+  // const navi = useNavigate();
 
   const [user,setUser] = useState({uname:"",email:"",password:""});
   const [cpass,setCpass] = useState("");
-  const [euser,setEU] = useState([]);
 
   const Signup = async() =>{
 
@@ -68,24 +66,10 @@ const SignUp = (props) => {
     }
   }
 
-  useEffect(()=>{
-
-    const getUD = async() =>{
-
-      const res = await getAllUsers();
-      setEU(res.data || []);
-      
-
-    }
-
-    getUD();
-
-  },[])
 
 
   return (
     <div className='SignUpDiv CenterFication'>
-      <ToasterFunc/>
       <h2>SignUp</h2>
       <div className='SignUpMainDiv CenterFication'>
         <form onSubmit={(event)=>{event.preventDefault();Signup()}} className='SignUpFORM CenterFication'>

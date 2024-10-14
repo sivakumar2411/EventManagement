@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.backend.backend.Model.Event;
 import com.backend.backend.Model.User;
 import com.backend.backend.Service.UserService;
 
@@ -45,6 +47,18 @@ public class UserController
     {
         try{
             US.updateUser(U);
+            return new ResponseEntity<>("Updated", HttpStatus.OK);
+        }
+        catch(Exception e){
+            return new ResponseEntity<>("Updation Failed",HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PutMapping("/UpdateUserForMana/{id}")
+    public ResponseEntity<String> UpdateUserForMana(@PathVariable int id,@RequestBody User U)
+    {
+        try{
+            US.UpdateForManager(U);
             return new ResponseEntity<>("Updated", HttpStatus.OK);
         }
         catch(Exception e){
@@ -86,8 +100,8 @@ public class UserController
         }
     }
 
-    @GetMapping("/LogIn/{a}/{b}")
-    public ResponseEntity<User> LogIn(@PathVariable String a,@PathVariable String b)
+    @GetMapping("/LogIn")
+    public ResponseEntity<User> LogIn(@RequestParam("uname") String a,@RequestParam("password") String b)
     {
         try{
             return new ResponseEntity<>(US.LoginUser(a, b),HttpStatus.OK);
@@ -103,6 +117,18 @@ public class UserController
     {
         try{
             return new ResponseEntity<>(US.getUnacceptedManagers(), HttpStatus.OK);
+        }
+        catch(Exception e){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PostMapping("/PostNewEvent/{id}")
+    public ResponseEntity<String> AddNewEvent(@PathVariable int id,@RequestBody Event E)
+    {
+        try{
+            US.AddNewEvent(id, E);
+            return new ResponseEntity<>("Added", HttpStatus.OK);
         }
         catch(Exception e){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

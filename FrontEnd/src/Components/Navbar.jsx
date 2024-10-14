@@ -60,7 +60,7 @@ const Navbar = () => {
             <div className="ProfileDetailsIconOnDiv CenterFication" ><PersonIcon/></div>
             <div className="ProfileDetailOnDiv ">Profile</div>
           </div>
-          <div className="ProfileDetailsNav item-2" onClick={(event)=>{LOGOUT();setIP(false)}}>
+          <div className="ProfileDetailsNav item-2" onClick={(event)=>{LOGOUT();setIP(false);navi('/');ScrolToTop()}}>
             <div className="ProfileDetailsIconOnDiv CenterFication"><LogoutIcon/></div>
             <div className="ProfileDetailOnDiv ">LogOut</div>
           </div>
@@ -79,7 +79,7 @@ const Navbar = () => {
         <div className={'ThemeIcon '+((Theme)?"Dark":"Light")} ><HomeIcon/></div>
         <div className='SidebarItemsName '>Home</div>
         </div>
-        {(LoggedIn)?<div className="SidebarItems item-2 CenterFication" onClick={(event)=>{navi('/DashBoard');ScrolToTop()}}>
+        {(LoggedIn && (User.mana || User.eventsOrganised?.length > 0))?<div className="SidebarItems item-2 CenterFication" onClick={(event)=>{navi('/DashBoard');ScrolToTop()}}>
         <div className={'ThemeIcon '+((Theme)?"Dark":"Light")} ></div>
         <div className='SidebarItemsName '>DashBoard</div>
         </div>:null}
@@ -97,7 +97,7 @@ const Navbar = () => {
         </div>
         <div className='SidebarItemsName '>Profile</div>
         </div>:null}
-        <div className="SidebarItems item-6 CenterFication" onClick={(event)=>{(LoggedIn)?LOGOUT():navi('/Sign')}}>
+        <div className="SidebarItems item-6 CenterFication" onClick={(event)=>{if(LoggedIn){LOGOUT();navi('/');ScrolToTop()}else{navi('/Sign')}}}>
         <div className={'ThemeIcon '+((Theme)?"Dark":"Light")} >{(LoggedIn)?<LogoutIcon/>:<PersonIcon/>}</div>
         <div className='SidebarItemsName '>{(LoggedIn)?"LogOut":"SignIn"}</div>
         </div>
@@ -109,7 +109,7 @@ const Navbar = () => {
 
             <div className={"navhead nav-1 "+((Theme)?"Dark":"Light")+((curPage === "Home")?" CurPage":"")} onClick={(event)=>{navi("/Home");ScrolToTop()}}>Home</div>
 
-            {(LoggedIn)?<div className={"navhead nav-2 "+((Theme)?"Dark":"Light")+((curPage === "Dash")?" CurPage":"")} onClick={(event)=>{navi("/DashBoard");ScrolToTop()}}>DashBoard</div>:null}
+            {(LoggedIn && (User.mana || User.eventsOrganised?.length > 0))?<div className={"navhead nav-2 "+((Theme)?"Dark":"Light")+((curPage === "Dash")?" CurPage":"")} onClick={(event)=>{navi("/DashBoard");ScrolToTop()}}>DashBoard</div>:null}
 
             <div className={"navhead nav-3 "+((Theme)?"Dark":"Light")+((curPage === "Event")?" CurPage":"")} onClick={(event)=>{navi("/Events");ScrolToTop()}}>Events</div>
             <div className={"navhead nav-4 "+((Theme)?"Dark":"Light")+((curPage === "About")?" CurPage":"")} onClick={(event)=>{navi("/About");ScrolToTop()}}>About Us</div>

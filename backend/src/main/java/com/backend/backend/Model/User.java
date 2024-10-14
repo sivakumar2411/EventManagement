@@ -4,10 +4,12 @@ import java.util.List;
 
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Lob;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
@@ -25,6 +27,7 @@ public class User
     private String password;
 
     @Lob
+    @Column(columnDefinition = "TEXT")
     private String profImg = "";
 
     private boolean admin = false,mana = false;
@@ -34,6 +37,9 @@ public class User
     
     @OneToMany(mappedBy = "organiser",cascade = CascadeType.ALL)
     private List<Event> eventsOrganised;
+
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    private List<Participants> participatedEvent;
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<Notification> notifications;

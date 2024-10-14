@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import '../Assets/Css/Admin.css'
 import { Context } from './GlobeData'
-import { DeleteUserById, getAllUsers, GetManaRequests, HandleAdmin, UpdateUser } from '../Assets/Api/UserApi';
+import { DeleteUserById, getAllUsers, GetManaRequests, HandleAdmin, UpdateUser, UpdateUserForMana } from '../Assets/Api/UserApi';
 import Boy from '../Assets/Datas/AboutData';
 import { Delete } from '@mui/icons-material';
 import { green, red } from '@mui/material/colors';
@@ -24,7 +24,7 @@ const Admin = () => {
     const [search,setSearch] = useState("");
     const [changes,setChanges] = useState(true);
     const [VVisi,setVVisi] = useState("hidden");
-    const [view,setView] = useState({});
+    const [view,setView] = useState([]);
 
     const HandleAdminIcon = async(id) =>{
         if(id !== 143)
@@ -45,22 +45,22 @@ const Admin = () => {
 
         const FetchU = async() =>{
             const res = await getAllUsers();
-            setAUser(res.data || []);
-            setSD(res.data || []);
+            await setAUser(res.data || []);
+            await setSD(res.data || []);
             
         }
 
         const FetchMR = async() =>{
             const res = await GetManaRequests();
-            setMR(res.data || []);
-            setSD(res.data || []);
+            await setMR(res.data || []);
+            await setSD(res.data || []);
 
         }
 
         const FetchM = async() =>{
             const res = await GetAllManagers();
-            setManas(res.data || []);
-            setSD(res.data || []);
+            await setManas(res.data || []);
+            await setSD(res.data || []);
         }
         
 
@@ -90,9 +90,9 @@ const Admin = () => {
         }
         else if(RenderDet === "Managers")
         {
-            filtered = Managers.filter((mana) =>
-            (mana.firstName.toLowerCase().includes(search.toLowerCase()) ||
-            mana.id.toString() === search.toLowerCase()));
+            filtered = Managers.filter((user) =>
+            (user.manager.firstName.toLowerCase().includes(search.toLowerCase()) ||
+            user.id.toString() === search.toLowerCase()));
         }
         setSD(filtered);
 
@@ -101,7 +101,7 @@ const Admin = () => {
 
   return (
     <div className={'AdminBaseDiv CenterFication '+((Theme)?"ThemeDarkBG":"ThemeLightBG")}>
-                        <ViewManaDetails Mana = {{manager:view.manager,VVisi,setVVisi}}/>
+                        <ViewManaDetails Mana = {{manager:view[0]?.manager,VVisi,setVVisi}}/>
         <div className={"AdminMainDiv CenterFication "+((Theme)?"ThemeDarkDiv":"ThemeLightDiv")}>
                 <div className="SideBarOnAdmin">
                     <div className={'SideBarButtonOnAdmin '+((RenderDet === "Users")?"Active ":"")+((Theme)?"ThemeDarkDiv":"ThemeLightDiv")} onClick={()=>setRD("Users")}>Users</div>
@@ -136,10 +136,25 @@ const Admin = () => {
                 </>:<div className='NotFoundAdmin'>Users Not Found</div>}
             </>:null}
             {(RenderDet === "Managers")?<>
-                {(SearData.length !== 0)?<>
-                {SearData.map((mana,index)=>(
+                {(SearData.length !== 0 && SearData.manager !== null)?<>
+                {SearData.map((user,index)=>(
                     <div key={index} className='MDonAdmin'>
-                        
+                        <div className="RightOnMDA CenterFication">
+                            <div className="ProfileOfManaDiv">
+                                <img style={{width:"100%",height:"100%",borderRadius:"50%"}} src={user.manager?.profImg?user.manager.profImg:Boy} alt={user.manager?.firstName}/>
+                            </div>
+                            <div className="ProfileNameOnMana">
+                                {user.manager?.firstName} {user.manager?.lastName}
+                            </div>
+                        </div>
+                        <div className="MiddleDtsDivONMD CenterFication">
+                        <p>Managed Evets: {user.manager?.events?user.manager.events.length:0}</p>
+
+                        </div>
+                        <div className="RightDtsMD CenterFication">
+                           {((user.admin && User.id === 143) || !user.admin)?<>
+                            <div className='DeleteIconOnAdmin' style={{visibility:user.id === 143?"hidden":"visible" }} onClick={async(event)=>{event.preventDefault();await DeleteManagerById(user.manager.id);await UpdateUser({...user,mana:false,manager:null});setChanges(!changes)}}><Delete sx={{color:red.A400}}/></div></>:null}
+                        </div>
                     </div>
                 ))}
                 </>:<div className='NotFoundAdmin'>Managers Not Found</div>}
@@ -156,11 +171,11 @@ const Admin = () => {
                         <div className="detailOnManaReqs">
                             <div className="DetailsOnMana">
                                 <div>{user.uname}</div>
-                                <div className='ManaViewDts' onClick={()=>{setView(user);setVVisi("visible")}}>View Details</div>
+                                <div className='ManaViewDts' onClick={()=>{view[0]=user;setVVisi("visible")}}>View Details</div>
                             </div>
                             <div className="AcceptOrNotMana">
-                                <div className="AcceptMana" onClick={async(event)=>{event.preventDefault();await UpdateUser({...user,manager:{...user.manager,accept:true}});setChanges(!changes)}}><DoneIcon  sx={{color:green.A400}}/></div>
-                                <div className="RejectMana" onClick={async(event)=>{event.preventDefault();await UpdateUser({...user,manager:null});await DeleteManagerById(user.manager.id);setChanges(!changes)}}><CloseIcon sx={{color:red.A400}}/></div>
+                                <div className="AcceptMana" onClick={async(event)=>{event.preventDefault();await UpdateUserForMana({...user,mana:true,manager:{...user.manager,accept:true}});setChanges(!changes)}}><DoneIcon  sx={{color:green.A400}}/></div>
+                                <div className="RejectMana" onClick={async(event)=>{event.preventDefault();await UpdateUserForMana({...user,manager:null});await DeleteManagerById(user.manager.id);setChanges(!changes)}}><CloseIcon sx={{color:red.A400}}/></div>
                             </div>
                         </div>
                     </div>

@@ -89,9 +89,9 @@ const About = () => {
             </div>))}
         </div>
 
-        <div className="ReviewsDiv">
+        {/* <div className="ReviewsDiv">
           Reviews
-        </div>
+        </div> */}
 
         <div className={"ContactUsDiv "+((Theme)?"ThemeDarkDiv":"ThemeLightDiv")}>
           <div className="ContactUsForm">

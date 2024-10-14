@@ -77,7 +77,7 @@ const Home = () => {
 
         <div className='HomeMainDiv CenterFication'>
 
-          <div className={'HomeHeroDiv CenterFication '}>
+          <div className={'HomeHeroDiv CenterFication '+((Theme)?"ThemeDarkDiv":"ThemeLightDiv")}>
 
             <div className="HeroContentDiv CenterFication">
               <p className='HeroHeadLine'>Turning Moments into Memories</p>

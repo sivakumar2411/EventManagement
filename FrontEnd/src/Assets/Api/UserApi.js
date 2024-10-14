@@ -25,9 +25,15 @@ export const PostUser = async(user) => {
 
 export const UpdateUser = async(user) =>await axios.put(`${API_URL}/Users/UpdateUser/${user.id}`,user);
 
-export const LogInApi = async(a,b) => await axios.get(`${API_URL}/Users/LogIn/${a}/${b}`);
+export const UpdateUserForMana = async(user) =>await axios.put(`${API_URL}/Users/UpdateUserForMana/${user.id}`,user);
+
+export const LogInApi = async(a,b) => await axios.get(`${API_URL}/Users/LogIn`,{params:{uname:a,password:b}});
 
 export const GetManaRequests = async() => await axios.get(`${API_URL}/Users/GetReqs`)
+
+// export const AddNewEvent = async(id,e) => await axios.post(`${API_URL}/Users/PostNewEvent/${id}`,{e});
+
+// export const GetAllManagers = async() => await axios.get(`${API_URL}/Users/GetAllManagers`);
         
 // export const getAllEvents = async() =>await axios.get(`${API_URL}/Events/`);
 

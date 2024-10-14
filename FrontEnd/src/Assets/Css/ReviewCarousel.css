@@ -1,0 +1,96 @@
+.ReviewCarasouelBaseDiv{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    position: relative;
+}
+.ReviewCarasouelMainDiv{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    grid-template-rows: 30% 60%;
+    gap: 10%;
+    z-index: 1;
+}
+
+.ClickONRC{
+    width: 30px;
+    height: 100%;
+    position: absolute;
+    background: rgb(0,0,0,.1);
+    z-index: 3;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    color: blue;
+}
+
+.ClickONRC:hover{
+    background: rgb(0,0,0,.5);
+}
+
+.RRC{
+    right: 0;
+}
+.LRC{
+    left: 0;
+}
+
+.RCLTOR{
+    animation: lefttorightRC ease 1s;
+}
+
+.RCRTOL{
+    animation: righttoleftRC ease 1s;
+}
+
+@keyframes lefttorightRC{
+    0%{
+        transform: translateX(100%);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+
+@keyframes righttoleftRC{
+    0%{
+        transform: translateX(-100%);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+
+.ReviewCarasouelHeadingDiv{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.ReviewerImgONRCHD{
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    font-size: 8px;
+    border-radius: 50%;
+}
+
+.ReviewerNameONRCHD{
+    width: 70%;
+    font-size: 18px;
+    overflow: hidden;
+}
+
+.ReviewCarasouelBodyDiv{
+    height: 100%;
+    width: 90%;
+    font-size: 17px;
+    text-indent: 10%;
+    text-wrap:pretty;
+    overflow:hidden;
+}

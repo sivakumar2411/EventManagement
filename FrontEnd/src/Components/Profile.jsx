@@ -6,7 +6,6 @@ import ClearIcon from '@mui/icons-material/Clear';
 import { Fab } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import BookmarkAddedIcon from '@mui/icons-material/BookmarkAdded';
-import ToasterFunc from './ToasterFunc';
 import { getAllUsers, UpdateUser } from '../Assets/Api/UserApi';
 import Boy from '../Assets/Datas/AboutData';
 import HomeIcon from '@mui/icons-material/Home';
@@ -63,7 +62,6 @@ const Profile = () => {
 
   return (
     <div className={'ProfileMainDiv CenterFication '+((Theme)?"ThemeDarkBG":"ThemeLightBG")}>
-        <ToasterFunc/>
         <div className='HomeAndAdminDiv'>
             <div className={'HomeIcononProfile '+((Theme)?"ThemeDarkDiv":"ThemeLightDiv")} onClick={(event)=>{navi('/Home')}}><HomeIcon sx={{color:pink.A400}}/></div>
             {(UserDatas.admin)?<div className={'AdminIcononProfile '+((Theme)?"ThemeDarkDiv":"ThemeLightDiv")} onClick={(event)=>{navi('/Admin')}}><AdminPanelSettingsIcon color='primary'/></div>:null}
@@ -100,7 +98,7 @@ const Profile = () => {
                         <div>
                         {/* <input id='Pro' type='text' minLength={4} required maxLength={23} readOnly={!isEditable} onChange={(event)=>{setUD({...UserDatas,uname:event.target.value})}} value={UserDatas.uname} style={{border:isEditable?"1px groove":"none",outline:isEditable?"":"none",background:"none"}} /> */}
                         <p className='ProfileGender'>{UserDatas.gender}</p>
-                        {(isEditable)?<select id='ProfGN' onClick={(event)=>{event.preventDefault();setUD({...UserDatas,gender:event.target.value})}}>
+                        {(isEditable)?<select id='ProfGN' style={{color:"black"}} onClick={(event)=>{event.preventDefault();setUD({...UserDatas,gender:event.target.value})}}>
                             <option selected={UserDatas.gender === "Male"}>Male</option>
                             <option selected={UserDatas.gender === "Female"}>Female</option>
                         </select>:null}
@@ -112,7 +110,7 @@ const Profile = () => {
                         <label htmlFor='ProfRN'><span>Region</span><br/>
                         <div>
                         <p className='ProfileRegion'>{UserDatas.region}</p>
-                        {(isEditable)?<select id='ProfRN' onClick={(event)=>{event.preventDefault();setUD({...UserDatas,region:event.target.value})}}>
+                        {(isEditable)?<select id='ProfRN' style={{color:"black"}} onClick={(event)=>{event.preventDefault();setUD({...UserDatas,region:event.target.value})}}>
                             <option selected={(UserDatas.region)==="Asia"}>Asia</option>
                             <option selected={(UserDatas.region)==="Africa"}>Africa</option>
                             <option selected={(UserDatas.region)==="Australia"}>Australia</option>

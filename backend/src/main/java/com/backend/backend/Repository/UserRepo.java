@@ -19,11 +19,11 @@ public interface UserRepo extends JpaRepository<User,Integer> {
     @Query("SELECT count(U) FROM User U WHERE U.email = :email or U.uname = :uname")
     int emailuserExist(String email, String uname);
 
-    @Query("Select U from User U where U.email = :a and U.password = :b")
-    public User getUserByEmail(String a,String b);
+    @Query("Select U from User U where U.email = :a")
+    public User getUserByEmail(String a);
 
-    @Query("Select U from User U where U.uname = :a and U.password = :b")
-    public User getUserByUserName(String a,String b);
+    @Query("SELECT U FROM User U WHERE U.email = :a or U.uname = :a")
+    User getByUNorEM(String a);
 
     @Query("select U from User U where U.manager.accept = false")
     public List<User> getUnacceptedManagers();

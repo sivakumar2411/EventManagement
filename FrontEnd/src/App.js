@@ -28,9 +28,9 @@ function App() {
       <Route path="/About" element={<About/>} />
       <Route path="/Sign" element={<SignPage/>} />
       {(LoggedIn)?<><Route path="/Profile" element={<Profile/>}/>
-        <Route path='/DashBoard' element={<DashBoard/>} />
+        {(User?.mana || User?.eventsOrganised?.length > 0)?<Route path='/DashBoard' element={<DashBoard/>} />:null}
         <Route path='/ManagerApplication' element={<ManagerApplication/>}/>
-        <Route path='/EventBooking' element={<EventBooking/>}/>
+        {(!User?.mana)?<Route path='/EventBooking' element={<EventBooking/>}/>:null}
         {(User?.admin)?<Route path="/Admin" element={<Admin/>}/>:null}
         </>:null}
       <Route path='*' exact element={<WrongUrl/>}/>

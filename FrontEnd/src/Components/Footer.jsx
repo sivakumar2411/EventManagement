@@ -20,7 +20,7 @@ const Footer = () => {
             <div className="FooterIconImage">
                 {/* <img src={EventCraft} alt='Logo'/> */}
             </div>
-            <div className="FContentS">Private Industries Ltd.</div>
+            <div className="FContentS"><span style={{fontFamily:"cursive"}}>S2V</span> Ltd.</div>
             <div className="FContentS">Providing reliable tech since 2022</div>
             <div className="FContentS FootCopyRight">Copyright &copy; 2024 - All right reserved</div>
         </div>

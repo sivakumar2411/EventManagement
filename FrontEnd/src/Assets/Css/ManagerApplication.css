@@ -40,6 +40,11 @@
     place-items: center;
 }
 
+.ApplyForManagerONMA{
+    grid-column: 1/3;
+    font-size: 25px;
+}
+
 .ManagerApplicationForm label{
     width: 90%;
     height: 80%;

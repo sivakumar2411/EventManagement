@@ -21,5 +21,10 @@ public interface ManagerRepo extends JpaRepository<Manager,Integer> {
     @Query("Select M from Manager M where M.accept = true")
     List<Manager> findAllManagers();
 
+    @Query("Select M from Manager M where lower(M.city) like lower(:a)")
+    List<Manager> getByPlace(String a);
+
+    @Query("SELECT M FROM Manager M LEFT JOIN M.review R where M.accept = true ORDER BY COALESCE(R.rating, 0) DESC")
+    List<Manager> getTopManagers();
     
 }

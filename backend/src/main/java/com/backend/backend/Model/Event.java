@@ -1,13 +1,16 @@
 package com.backend.backend.Model;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import lombok.Data;
@@ -21,7 +24,11 @@ public class Event
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String ename,description,type,place,status;
+    private String ename,type,place,status = "Not Accepted";
+
+    @Lob
+    @Column(columnDefinition = "TEXT")
+    private String description;
 
     private boolean publicevent;
 
@@ -29,7 +36,9 @@ public class Event
 
     private int expectedPeople;
 
-    private Date eventDate;
+    private List<Integer> ManaVisi;
+
+    private LocalDateTime eventdateTime;
 
     @ManyToOne(cascade = CascadeType.ALL)
     private User organiser;

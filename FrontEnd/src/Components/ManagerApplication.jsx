@@ -1,16 +1,15 @@
 import React, { useContext, useState } from 'react'
 import { Context } from './GlobeData';
 import '../Assets/Css/ManagerApplication.css'
-import ToasterFunc from './ToasterFunc';
 import toast from 'react-hot-toast';
 // import { PostNewManager } from '../Assets/Api/ManagerApi';
 import { useNavigate } from 'react-router-dom';
-import { UpdateUser } from '../Assets/Api/UserApi';
+import { UpdateUserForMana } from '../Assets/Api/UserApi';
 
 
 const ManagerApplication = () => {
 
-    const {Theme,User,setUser} = useContext(Context); 
+    const {Theme,User,Update} = useContext(Context); 
     const navi = useNavigate()
 
     const [data,setData] = useState({firstName:"",lastName:"",birthDate:"",address:"",city:"",state:"",postCode:"",email:"",mobNo:"",exp:"",resume:"",profImg:""})
@@ -80,8 +79,8 @@ const ManagerApplication = () => {
         {
             console.log({User,manager:data});
             
-            await UpdateUser({...User,manager:data});
-            await setUser({...User,manager:data});
+            await UpdateUserForMana({...User,manager:data});
+            await Update({...User,manager:data});
             toast.success("Application Submitted Successfully!");
             setTimeout(()=>{
                 navi("/Home");
@@ -91,12 +90,12 @@ const ManagerApplication = () => {
 
   return (
     <div className={'ManaAppBaseDiv '+((Theme)?"ThemeDarkBG":"ThemeLightBG")}>
-        <ToasterFunc/>
 
         <div className={"ManaMainDiv "+((Theme)?"ThemeDarkDiv":"ThemeLightDiv")}>
             {(User.mana)?<div className='AlreadyHired'>You Are already Hired...!</div>:<>
             {(User.manager !== null)?<div className="AlreadyHired PendingReq">Your Request is Pending...!</div>:
             <form className="ManagerApplicationForm " onSubmit={(event)=>{event.preventDefault();ValidationAndReq();}}>
+                <p className='ApplyForManagerONMA'>Apply For Manager</p>
                 <label htmlFor='ManaFormFirstName' title='FirstName'>
                     <input placeholder='FirstName' value={data.firstName} onChange={(event)=>{setData({...data,firstName:event.target.value})}} type="text" id='ManaFormFirstName' className="MFFirstName" />
                 </label>

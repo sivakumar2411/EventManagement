@@ -2,6 +2,7 @@
     width: 100%;
     min-height: 100vh;
     height: auto;
+    padding-bottom: 40px;
 }
 
 .NavDivOnDash{
@@ -23,4 +24,353 @@
     width: 100%;
     min-height:100vh ;
     height: auto;
+    flex-direction: column;
+    gap: 100px;
+    margin-bottom: 40px;
+    padding-top: 60px;
+}
+
+.DashBoardHero{
+    width: 90%;
+    height: 70vh;
+    border-radius: 20px;
+    margin-top: 100px;
+}
+
+.DashBoardContents{
+    width: 95%;
+    padding-top: 30px;
+    min-height: 50vh;
+    max-height: 200vh;
+    display: grid;
+    grid-template-rows: 10vh minmax(50vh , 185vh);
+    gap: 30px;
+}
+
+.DBHeadings{
+    display: grid;
+    height: 100%;
+    grid-template-columns: repeat(3,1fr);
+    font-size: 23px;
+    place-items: center;
+}
+
+.DBHeadings div{
+    min-width: 200px;
+    max-width: 250px;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    transition: .5s ease;
+    cursor: pointer;
+}
+
+.DBHeadings .UpperLift{
+    transform: translateY(-20px);
+    /* background: linear-gradient(to right,gold , black); */
+    /* background-size: 1px; */
+    color: blue;
+    font-size: 25px;
+    /* -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; */
+}
+
+.EDB{
+    height: 100%;
+    width: 100%;
+    overflow-y: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.EventNotFoundONDB{
+    width: 80%;
+    height: 50vh;
+    display: grid;
+    place-items: center;
+    opacity: .4;
+}
+
+.EventCardDiv{
+    width: 80%;
+    height: 50vh;
+    /* background: linear-gradient(71deg, #080509, #1a171c, #080509); */
+    display: grid;
+    position: relative;
+    grid-template-columns: 30% 70%;
+    place-items: center;
+}
+
+.LeftDivONEC{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+}
+
+.EventImgONEC{
+    width: 250px;
+    height: 250px;
+    overflow: hidden;
+}
+
+.EventNameONEC{
+    font-size: 23px;
+}
+
+.RightDivONEC{
+    width: 90%;
+    height: 85%;
+    gap: 10px;
+}
+
+.HeadingONEC{
+    font-size: 21px;
+    color: darkorange;
+}
+
+.DescriptionONEC{
+    font-size: 19px;
+    width: 95%;
+    min-height: 30%;
+    max-height: 40%;
+    overflow: hidden;
+    text-indent: 10%;
+    padding: 10px;
+    /* border: 1px groove green; */
+}
+
+.OtherDtsONEC{
+    width: 100%;
+    min-height: 50%;
+    max-height: 55%;
+    /* border: 1px groove yellow; */
+    display: grid;
+    place-items: center;
+    row-gap: 5px;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 20% 20% 20% 20% 20%;
+    grid-auto-flow: row;
+    font-size: 18px;
+}
+
+.OtherDtsONEC div{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+}
+
+.OtherDtsONEC .HeadingOnOtherDts{
+    width: 40%;
+    color: darkorange;
+}
+
+.OtherDtsONEC .ContentsOnOtherDts{
+    width: 55%;
+}
+
+.OtherDtsONEC .PubOrPriONODONEC{
+    width: auto;
+}
+
+.OtherDtsONEC .ChatWithOrganMana{
+    margin-top: 10px;
+    width: auto;
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 1px groove blue;
+    color:blue;
+    cursor: pointer;
+}
+
+.OtherDtsONEC .ActionONEC{
+    margin-top: 10px;
+    width: auto;
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    /* border: 1px groove green; */
+    color:green;
+    cursor: pointer;
+}
+
+.CurrentORPassedEventDB{
+    display: grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,350px));
+    column-gap: 80px;
+    row-gap: 30px;
+    justify-content: center;
+    align-items: center;
+    grid-template-rows: 450px 450px 450px;
+}
+
+.EventDivONDBC{
+    width: 100%;
+    height: 100%;
+    perspective: 1000px;
+    background: transparent;
+    display: grid;
+    place-items: center;
+    transition: .6s;
+}
+
+.LiftUpMagic:hover{
+    transform: translateY(-20px) scale(1.03);
+}
+
+.EventInnerDivONDBC{
+    width: 100%;
+    margin-top: 5%;
+    height: 95%;
+    cursor: pointer;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+    position: relative;
+    border-radius: 10px;
+}
+
+.FrontDivOnCPDBC{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    position: absolute;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    display: grid;
+    place-items: center;
+    grid-template-rows: 30% 60%;
+    /* background: white; */
+    /* background-color: white; */
+}
+
+.BackDivOnCPDBC{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    position: absolute;
+    display: grid;
+    place-items: center;
+    grid-template-rows: 30% 65%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    /* background-color: green; */
+    transform: rotateY(180deg);
+}
+
+.ThemeLightBG .FrontDivOnCPDBC,.ThemeLightBG .BackDivOnCPDBC{
+    background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+    box-shadow: 0 8px 14px 0 rgba(0,0,0,0.2);
+}
+
+.ThemeDarkBG .FrontDivOnCPDBC,.ThemeDarkBG .BackDivOnCPDBC{
+    background: rgb(17,17,17);
+}
+
+
+/* .EventDivONDBC:hover .EventInnerDivONDBC{
+    transform: rotateY(180deg);
+} */
+
+.CurrentORPassedEventDB .EventNotFoundONDB{
+    grid-column: 1/4;
+    width: 100%;
+    height: 100%;
+    font-size: 22px;
+}
+
+.TopOnFrontDivCPDBC{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.EImageONFrontDivCPDBC{
+    width: 100px;
+    height: 100px;
+    /* border: 1px groove green; */
+    overflow: hidden;
+}
+
+.ENameONFrontDivCPDBC{
+    height: 100%;
+    width: 200px;
+    overflow: hidden;
+    display: grid;
+    align-items: center;
+    font-size: 19px;
+    color: gold;
+}
+
+.MiddleOnFrontDivCPDBC{
+    height: 100%;
+    width: 100%;
+}
+
+.EDescriptionONFrontDivCPDBC{
+    margin: auto;
+    width: 95%;
+    height: 100%;
+    font-size: 17px;
+    text-indent: 30%;
+}
+
+.BottomOnFrontDivCPDBC{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    font-size: 18px;
+    overflow: hidden;
+}
+
+.TopOnBackDivCPDBC{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.MImageONBackDivCPDBC{
+    width: 100px;
+    height: 100px;
+    border: 1px groove green;
+    overflow: hidden;
+}
+
+.ManagerNameONBackDivCPDBC{
+    height: 100%;
+    width: 200px;
+    overflow: hidden;
+    display: grid;
+    align-items: center;
+    font-size: 19px;
+    grid-template-rows: 20% 20% 20% 20%;
+    color: gold;
+}
+
+.BottomOnBackDivCPDBC{
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 30% 50%;
+    grid-template-rows: repeat(7,14.5%);
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    overflow: hidden;
+}
+
+.HeadingONBBDCPDBC{
+    color: darkorange;
+}
+
+.PubOrPriONBBDCPDBC{
+    grid-column: 1/3;
+    place-items: center;
+    text-align: center;
 }
