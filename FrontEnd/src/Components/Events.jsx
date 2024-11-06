@@ -162,7 +162,7 @@ const Events = () => {
         <div className={"EventContentDiv "+((Theme)?"ThemeDarkDiv":"ThemeLightDiv")}>
             <div className="HeadingOnECD">
                 <div className="HeadingInnerDiv">
-                    <div className="HeadingDivOnECD HECD-1" onClick={()=>{setDD("PE")}}>Events</div>
+                    <div className="HeadingDivOnECD HECD-1" onClick={()=>{if(LoggedIn)setDD("PE")}}>Events</div>
                     <div className="HeadingDivOnECD HECD-2" onClick={()=>{setDD("PassedE")}}>Participated Events</div>
                     <div className="HeadingDivOnECD HECD-3" onClick={()=>{setDD("Event")}}>Passed Events</div>
                 </div>
@@ -217,7 +217,7 @@ const Events = () => {
                                         new Date(event.eventdateTime).getMonth()-new Date().getMonth() > 0 ? (new Date(event.eventdateTime).getMonth()-new Date().getMonth() +" Month "):
                                         new Date(event.eventdateTime).getDate()-new Date().getDate() > 0 ?new Date(event.eventdateTime).getDate()-new Date().getDate()+" Days ":"Event is OnGoing"}
                                         To The Event</div>:null}               
-                                    {(dispDiv === "Event" && User.id !== event.organiser.id)?<div className="JoinNowOnBDFE">JoinNow<div className='JoinButOnBDFE' onClick={(e)=>{e.stopPropagation();if(!LoggedIn){toast.success("Sign In To Join");setTimeout(()=>{navi('/Sign')},2500)}HandleJoin(event.id)}}>{(event.fee > 0)?event.fee:"Free"}</div></div>:null}
+                                    {(dispDiv === "Event" && User.id !== event.organiser.id)?<div className="JoinNowOnBDFE">JoinNow<div className='JoinButOnBDFE' onClick={(e)=>{e.stopPropagation();if(!LoggedIn){toast.success("Sign In To Join");setTimeout(()=>{navi('/Sign')},2500)}else HandleJoin(event.id)}}>{(event.fee > 0)?event.fee:"Free"}</div></div>:null}
                                     {(dispDiv === "PassedE")?<div className='DaysToEventONBDFE'>Participated People {event?.participants?event.participants.length:0}</div>:null}
                                 </div>
                             </div>
